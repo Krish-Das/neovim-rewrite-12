@@ -4,6 +4,22 @@ return {
   { "nvim-mini/mini.surround", opts = {}, event = event },
   { "nvim-mini/mini.ai", opts = {}, event = event },
 
+  -- Eye Candy
+  {
+    "j-hui/fidget.nvim",
+    event = { "BufEnter" },
+    opts = {
+      text = {
+        spinner = "dots_negative",
+      },
+    },
+  },
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
   -- Autotag
   {
     "windwp/nvim-ts-autotag",
