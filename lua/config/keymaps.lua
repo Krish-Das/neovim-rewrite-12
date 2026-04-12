@@ -32,6 +32,11 @@ map("<c-space>", function()
   vim.lsp.completion.get()
 end, "Trigger LSP completion", "i")
 
+map("g.", function()
+  vim.lsp.buf.code_action()
+end, "Trigger LSP Code action")
+vim.keymap.del("n", "gra")
+
 map("<C-s>", ":update<CR>", "Write current buffer to the file")
 
 -- Join lines below and move cursor where it was
