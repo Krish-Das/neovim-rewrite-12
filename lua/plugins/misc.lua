@@ -20,6 +20,19 @@ return {
     opts = {},
   },
 
+  -- Indentline
+  {
+    "echasnovski/mini.indentscope",
+    version = "*",
+    event = "BufEnter",
+    opts = {
+      draw = {
+        delay = 250,
+      },
+      symbol = "│", -- ┃
+    },
+  },
+
   -- Autotag
   {
     "windwp/nvim-ts-autotag",
