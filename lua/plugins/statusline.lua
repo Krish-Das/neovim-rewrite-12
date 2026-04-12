@@ -4,6 +4,7 @@ return {
   config = function()
     local noice = require("noice")
 
+    ---@diagnostic disable-next-line: unused-function, unused-local
     local function truncate_branch_name(branch)
       if not branch or branch == "" then
         return ""
@@ -33,16 +34,16 @@ return {
         globalstatus = false,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        --   █ ❘
       },
       sections = {
-        lualine_b = {
+        lualine_b = { { "filename", path = 1 } },
+        lualine_c = {
           {
             noice.api.statusline.mode.get,
             cond = noice.api.statusline.mode.has,
             color = { fg = "#ff9e64" },
           },
-          { "branch", icon = "", fmt = truncate_branch_name },
+          -- { "branch", icon = "", fmt = truncate_branch_name },
           {
             "diff",
             diff_color = {
@@ -70,7 +71,6 @@ return {
             always_visible = false,
           },
         },
-        lualine_c = { { "filename", path = 1 } },
         lualine_x = { "filetype" },
       },
     })
