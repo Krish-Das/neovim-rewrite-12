@@ -33,6 +33,17 @@ return {
     },
   },
 
+  -- Virt column
+  {
+    "lukas-reineke/virt-column.nvim",
+    event = "BufEnter",
+    opts = {
+      char = { "│" }, -- | │ ┃
+      virtcolumn = "80",
+      highlight = { "Whitespace" }, -- NonText Whitespace
+    },
+  },
+
   -- Autotag
   {
     "windwp/nvim-ts-autotag",
