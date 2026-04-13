@@ -1,10 +1,22 @@
-local event = { "BufReadPre", "BufNewFile" }
+local ts_select = function(query, query_group)
+  return function()
+    require("nvim-treesitter-textobjects.select").select_textobject(query, query_group or "textobjects")
+  end
+end
+
+local ts_move = function(dir, query, query_group)
+  -- dir: "next_start" | "next_end" | "previous_start" | "previous_end"
+  return function()
+    require("nvim-treesitter-textobjects.move")["goto_" .. dir](query, query_group or "textobjects")
+  end
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
     build = ":TSUpdate",
-    event = event,
+    event = { "BufReadPre", "BufNewFile" },
     init = function()
       vim.o.foldmethod = "expr"
       vim.o.foldexpr = "nvim_treesitter#foldexpr()"
@@ -79,118 +91,30 @@ return {
       },
     },
     keys = {
-      {
-        "am",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
-        end,
-        desc = "TS: Select function outer",
-        mode = { "x", "o" },
-      },
-      {
-        "im",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
-        end,
-        desc = "TS: Select function inner textobject",
-        mode = { "x", "o" },
-      },
-      {
-        "ac",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
-        end,
-        desc = "TS: Select class outer textobject",
-        mode = { "x", "o" },
-      },
-      {
-        "ic",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
-        end,
-        desc = "TS: Select class inner textobject",
-        mode = { "x", "o" },
-      },
-      {
-        "as",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
-        end,
-        desc = "TS: Select local scope",
-        mode = { "x", "o" },
-      },
-      {
-        "]m",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-        end,
-        desc = "TS: Next function start",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "[m",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
-        end,
-        desc = "TS: Previous function start",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "]M",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
-        end,
-        desc = "TS: Next function end",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "[M",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
-        end,
-        desc = "TS: Previous function end",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "]o",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_next_start({ "@loop.inner", "@loop.outer" }, "textobjects")
-        end,
-        desc = "TS: Next loop start",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "]s",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
-        end,
-        desc = "TS: Next local scope",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "]z",
-        function()
-          require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
-        end,
-        desc = "TS: Next fold start",
-        mode = { "n", "x", "o" },
-      },
+      -- stylua: ignore start
+      { "am", ts_select("@function.outer"),           desc = "TS: Select function outer",        mode = { "x", "o" } },
+      { "im", ts_select("@function.inner"),           desc = "TS: Select function inner",        mode = { "x", "o" } },
+      { "ac", ts_select("@class.outer"),              desc = "TS: Select class outer",           mode = { "x", "o" } },
+      { "ic", ts_select("@class.inner"),              desc = "TS: Select class inner",           mode = { "x", "o" } },
+      { "as", ts_select("@local.scope", "locals"),    desc = "TS: Select local scope",           mode = { "x", "o" } },
+      { "]m", ts_move("next_start", "@function.outer"),     desc = "TS: Next function start",    mode = { "n", "x", "o" } },
+      { "[m", ts_move("previous_start", "@function.outer"), desc = "TS: Prev function start",    mode = { "n", "x", "o" } },
+      { "]M", ts_move("next_end", "@function.outer"),       desc = "TS: Next function end",      mode = { "n", "x", "o" } },
+      { "[M", ts_move("previous_end", "@function.outer"),   desc = "TS: Prev function end",      mode = { "n", "x", "o" } },
+      { "]o", ts_move("next_start", { "@loop.inner", "@loop.outer" }), desc = "TS: Next loop",   mode = { "n", "x", "o" } },
+      { "]s", ts_move("next_start", "@local.scope", "locals"),         desc = "TS: Next scope",  mode = { "n", "x", "o" } },
+      { "]z", ts_move("next_start", "@fold", "folds"),                 desc = "TS: Next fold",   mode = { "n", "x", "o" } },
       {
         "<leader>x",
-        function()
-          require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
-        end,
-        desc = "TS: Swap next parameter",
-        mode = "n",
+        function() require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner") end,
+        desc = "TS: Swap next param", mode = "n",
       },
       {
         "<leader>X",
-        function()
-          require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer")
-        end,
-        desc = "TS: Swap previous parameter",
-        mode = "n",
+        function() require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer") end,
+        desc = "TS: Swap prev param", mode = "n",
       },
+      -- stylua: ignore end
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
