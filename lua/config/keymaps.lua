@@ -37,6 +37,10 @@ map("g.", function()
 end, "Trigger LSP Code action")
 vim.keymap.del("n", "gra")
 
+map("gh", function()
+  vim.lsp.buf.hover()
+end, "Trigger LSP hover")
+
 map("<C-s>", ":update<CR>", "Write current buffer to the file")
 
 -- Join lines below and move cursor where it was
