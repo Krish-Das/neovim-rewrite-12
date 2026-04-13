@@ -62,7 +62,7 @@ return {
 
   -- Leap jump
   {
-    "codeberg.org/andyg/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim.git",
     name = "leap",
     keys = {
       { "g>", "<Plug>(leap-forward)", desc = "Leap: Forward to", mode = { "n", "x", "o" } },
