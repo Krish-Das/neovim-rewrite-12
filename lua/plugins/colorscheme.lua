@@ -1,8 +1,9 @@
-return {
+local theme = require("config.theme")
+
+local spec = {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = "VeryLazy",
     opts = {
       transparent_background = true,
       styles = {
@@ -16,8 +17,6 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = false,
-    priority = 1000,
     opts = {
       styles = {
         transparency = true,
@@ -28,7 +27,6 @@ return {
   {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
-    lazy = "VeryLazy",
     opts = {
       options = {
         transparent = false,
@@ -39,4 +37,23 @@ return {
       },
     },
   },
+  {
+    "ankushbhagats/pastel.nvim",
+    opts = {
+      style = {
+        border = false,
+      },
+      filetypes = {
+        markdown = {
+          highlights = function(hl, c)
+            hl.Title.bold = true
+          end,
+        },
+      },
+    },
+    name = "pastel",
+    colorscheme = "pastelrose",
+  },
 }
+
+return theme.activate(spec, "pastel")
