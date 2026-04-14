@@ -20,9 +20,7 @@ return {
     },
     views = {
       cmdline_popup = {
-        border = {
-          -- style = "none",
-        },
+        border = {},
         filter_options = {},
         win_options = {
           winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
@@ -33,8 +31,8 @@ return {
       view = "cmdline",
       format = {
         cmdline = { pattern = "^:", icon = ":", lang = "vim" },
-        search_down = { kind = "search", pattern = "^/", icon = "↓ /", lang = "regex" },
-        search_up = { kind = "search", pattern = "^%?", icon = "↑ /", lang = "regex" },
+        search_down = { kind = "search", pattern = "^/", icon = "↓", lang = "regex" },
+        search_up = { kind = "search", pattern = "^%?", icon = "↑", lang = "regex" },
         help = { pattern = "^:%s*he?l?p?%s+", icon = "h" },
       },
     },

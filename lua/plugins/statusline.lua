@@ -1,6 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  dependencies = { "folke/noice.nvim", "MunifTanjim/nui.nvim" },
   config = function()
     local noice = require("noice")
 
@@ -23,36 +24,21 @@ return {
 
     require("lualine").setup({
       options = {
-        theme = {
-          normal = {
-            a = { gui = "bold" },
-            b = {},
-            c = {},
-          },
-        },
-
+        theme = { normal = { a = { gui = "bold" } } },
         globalstatus = false,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_b = { { "filename", path = 1 } },
-        lualine_c = {
+        -- lualine_b = { { "filename", path = 1 } },
+        lualine_b = {
           {
             noice.api.statusline.mode.get,
             cond = noice.api.statusline.mode.has,
             color = { fg = "#ff9e64" },
           },
           -- { "branch", icon = "", fmt = truncate_branch_name },
-          {
-            "diff",
-            diff_color = {
-              added = { fg = "#C3E88D" },
-              modified = { fg = "#A9B1D6" },
-              removed = { fg = "#C53B53" },
-            },
-            symbols = { added = "+", modified = "~", removed = "-" },
-          },
+          { "diff", symbols = { added = "+", modified = "~", removed = "-" } },
           {
             "diagnostics",
             sources = { "nvim_lsp", "nvim_diagnostic" },
@@ -71,6 +57,7 @@ return {
             always_visible = false,
           },
         },
+        lualine_c = {},
         lualine_x = { "filetype" },
       },
     })
