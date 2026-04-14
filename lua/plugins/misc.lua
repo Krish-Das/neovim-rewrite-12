@@ -1,19 +1,9 @@
-local event = { "BufReadPost", "BufNewFile" }
 return {
   -- Mini.nvim
-  { "nvim-mini/mini.surround", opts = {}, event = event },
-  { "nvim-mini/mini.ai", opts = {}, event = event },
+  -- { "nvim-mini/mini.surround", opts = {}, keys = { "sa", "sd", "sr", "sf" } },
+  { "kylechui/nvim-surround", version = "^4.0.0", event = "VeryLazy" },
+  { "nvim-mini/mini.ai", opts = {}, event = { "BufReadPost", "BufNewFile" } },
 
-  -- Eye Candy
-  {
-    "j-hui/fidget.nvim",
-    event = { "BufEnter" },
-    opts = {
-      text = {
-        spinner = "dots_negative",
-      },
-    },
-  },
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
