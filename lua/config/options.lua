@@ -32,7 +32,7 @@ vim.opt.hlsearch = true
 vim.opt.wrap = false
 vim.opt.linebreak = true
 
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- Better splitting
 vim.opt.splitbelow = true
@@ -94,7 +94,7 @@ vim.opt.backup = false
 vim.opt.showmode = false
 
 -- Disable the welcome message
--- vim.opt.shortmess:append("I")
+vim.opt.shortmess:append("I") -- neovim 12 logo is ugly!
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`

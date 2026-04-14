@@ -55,8 +55,8 @@ return {
     "https://codeberg.org/andyg/leap.nvim.git",
     name = "leap",
     keys = {
-      { "g>", "<Plug>(leap-forward)", desc = "Leap: Forward to", mode = { "n", "x", "o" } },
-      { "g<", "<Plug>(leap-backward)", desc = "Leap: Backward to", mode = { "n", "x", "o" } },
+      { "s", "<Plug>(leap-forward)", desc = "Leap: Forward to", mode = { "n", "x", "o" } },
+      { "<A-s>", "<Plug>(leap-backward)", desc = "Leap: Backward to", mode = { "n", "x", "o" } },
       { "x", "<Plug>(leap-forward-till)", desc = "Leap: Forward till", mode = { "x", "o" } },
       { "X", "<Plug>(leap-backward-till)", desc = "Leap: Backward till", mode = { "x", "o" } },
       { "gs", "<Plug>(leap-from-window)", desc = "Leap: to non-current buffer", mode = { "n", "x", "o" } },
