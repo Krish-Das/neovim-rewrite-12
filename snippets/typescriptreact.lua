@@ -1,13 +1,20 @@
 ---@diagnostic disable: undefined-global
 return {
   -- console.log
-  s({ trig = "clg", snippetType = "autosnippet" }, fmta("console.log(<>)", { i(0) })),
+  s({ trig = ";clg", snippetType = "autosnippet", wordTrig = true }, fmta("console.log(<>)", { i(1, "value") })),
 
   -- React function component
   s(
-    { trig = "rfc", snippetType = "autosnippet" },
+    { trig = ";rfc", snippetType = "autosnippet", wordTrig = true },
+    fmta("export function <>() {\n\treturn <>\n}", {
+      i(1, "Component"),
+      i(0),
+    })
+  ),
+  s(
+    { trig = ";rfdc", snippetType = "autosnippet", wordTrig = true },
     fmta("export default function <>() {\n\treturn <>\n}", {
-      i(1),
+      i(1, "Component"),
       i(0),
     })
   ),
@@ -17,7 +24,7 @@ return {
     { trig = "imp" },
     fmta('import { <> } from "<>"', {
       i(0),
-      i(1),
+      i(1, "react"),
     })
   ),
 
@@ -25,7 +32,7 @@ return {
   s(
     { trig = "ush" },
     fmta("const [<>, set<>] = useState(<>)", {
-      i(1),
+      i(1, "state"),
       -- Capitalize the first letter
       f(function(args)
         local text = args[1][1]
