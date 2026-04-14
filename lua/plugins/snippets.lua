@@ -1,6 +1,6 @@
 return {
   "L3MON4D3/LuaSnip",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "InsertEnter",
   opts = { enable_autosnippets = true },
   config = function(_, opts)
     local ls = require("luasnip")

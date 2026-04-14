@@ -76,7 +76,7 @@ return {
   -- Fold plugin
   {
     "chrisgrieser/nvim-origami",
-    event = event,
+    event = "VeryLazy",
     opts = {
       foldtext = {
         lineCount = { template = " %d" },

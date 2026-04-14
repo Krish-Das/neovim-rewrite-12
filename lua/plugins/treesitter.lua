@@ -16,7 +16,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
     build = ":TSUpdate",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "BufReadPost",
     init = function()
       vim.o.foldmethod = "expr"
       vim.o.foldexpr = "nvim_treesitter#foldexpr()"
