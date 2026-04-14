@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
+  rocks = { hererocks = false, enabled = false },
   spec = { { import = "plugins" } },
   checker = { enabled = true, notify = true },
   change_detection = { enabled = true, notify = true },
