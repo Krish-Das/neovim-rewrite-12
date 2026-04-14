@@ -1,10 +1,3 @@
----@diagnostic disable: unused-local
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- enable 24-bit color
-vim.opt.termguicolors = true
-
 local oil = {
   "stevearc/oil.nvim",
   ---@module 'oil'
@@ -49,14 +42,14 @@ local neo_tree = {
   ---@module "neo-tree"
   ---@type neotree.Config?
   opts = {
-    window = {
-      position = "right",
-    },
+    window = { position = "left" },
     filesystem = {
+      hijack_netrw_behavior = "disabled",
       filtered_items = {
         hide_by_name = { "node_modules" },
         always_show_by_pattern = { ".env*" },
       },
+      follow_current_file = { enabled = true },
     },
     default_component_configs = {
       git_status = {
@@ -65,13 +58,13 @@ local neo_tree = {
           added = "A",
           modified = "M", -- 
           deleted = "D", -- ⨯
-          renamed = "R", -- 󰁕
+          renamed = "R",
           -- Status type
           untracked = "?",
           ignored = "",
           unstaged = "󰄱",
           staged = "",
-          conflict = "",
+          conflict = "⨯",
         },
       },
     },
@@ -85,8 +78,16 @@ local neo_tree = {
       desc = "Toggle neotree file explorer",
     },
   },
+  init = function()
+    -- disable netrw
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+    -- enable 24-bit color
+    vim.opt.termguicolors = true
+  end,
 }
 
+---@diagnostic disable-next-line: unused-local
 local nvim_tree = {
   "nvim-tree/nvim-tree.lua",
   keys = {
