@@ -2,6 +2,7 @@ return {
   { "kylechui/nvim-surround", version = "^4.0.0", event = "VeryLazy" },
   { "nvim-mini/mini.ai", opts = {}, event = { "BufReadPost", "BufNewFile" } },
 
+  -- Eye candy
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
@@ -48,6 +49,9 @@ return {
     },
   },
 
+  -- Exchange
+  { "tommcdo/vim-exchange", keys = { "cx", "X" } },
+
   -- Leap jump
   {
     "https://codeberg.org/andyg/leap.nvim.git",
@@ -55,8 +59,6 @@ return {
     keys = {
       { "s", "<Plug>(leap-forward)", desc = "Leap: Forward to", mode = { "n", "x", "o" } },
       { "<A-s>", "<Plug>(leap-backward)", desc = "Leap: Backward to", mode = { "n", "x", "o" } },
-      { "x", "<Plug>(leap-forward-till)", desc = "Leap: Forward till", mode = { "x", "o" } },
-      { "X", "<Plug>(leap-backward-till)", desc = "Leap: Backward till", mode = { "x", "o" } },
       { "gs", "<Plug>(leap-from-window)", desc = "Leap: to non-current buffer", mode = { "n", "x", "o" } },
     },
   },
