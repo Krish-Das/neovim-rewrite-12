@@ -1,6 +1,4 @@
 return {
-  -- Mini.nvim
-  -- { "nvim-mini/mini.surround", opts = {}, keys = { "sa", "sd", "sr", "sf" } },
   { "kylechui/nvim-surround", version = "^4.0.0", event = "VeryLazy" },
   { "nvim-mini/mini.ai", opts = {}, event = { "BufReadPost", "BufNewFile" } },
 

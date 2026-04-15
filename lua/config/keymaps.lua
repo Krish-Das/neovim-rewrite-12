@@ -22,6 +22,9 @@ map("x", '"_x')
 map("C", '"_C')
 map("c", '"_c')
 
+-- Disable quit, use :q
+map("<C-w><C-q>", "<nop>")
+
 -- Move lines up or down
 map("<A-j>", ":m .+1<CR>==", "Move lines down")
 map("<A-k>", ":m .-2<CR>==", "Move lines up")

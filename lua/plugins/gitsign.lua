@@ -2,6 +2,8 @@ return {
   "lewis6991/gitsigns.nvim",
   event = { "BufEnter" },
   opts = {
+    signcolumn = false,
+    current_line_blame = true,
     on_attach = function(bufnr)
       local gs = require("gitsigns")
       local map = function(mode, lhs, rhs, desc)
@@ -46,6 +48,7 @@ return {
       map("n", "<leader>hQ", function()
         gs.setqflist("all")
       end, "Quickfix list all")
+      map("n", "<leader>tgs", gs.toggle_signs, "Toggle signs")
       map("n", "<leader>tgb", gs.toggle_current_line_blame, "Toggle line blame")
       map("n", "<leader>tgw", gs.toggle_word_diff, "Toggle word diff")
       map({ "o", "x" }, "ih", gs.select_hunk, "Select hunk")
