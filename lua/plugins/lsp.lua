@@ -15,20 +15,17 @@ return {
     "j-hui/fidget.nvim",
   },
   config = function()
+    local map = require("config.keymap_utils")
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
-        -- TODO: Replace with keymap_utils
-        local map = function(keys, func, desc, mode)
-          mode = mode or "n"
-          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-        end
-
         map("grn", vim.lsp.buf.rename, "LSP: Rename")
-        map("gra", vim.lsp.buf.code_action, "LSP: Code Action", { "n", "x" })
         map("g.", vim.lsp.buf.code_action, "LSP: Code Action", { "n", "x" })
         map("grD", vim.lsp.buf.declaration, "LSP: Goto Declaration")
         map("gd", vim.lsp.buf.definition, "LSP: Goto Declaration")
+        map("gh", vim.lsp.buf.hover, "LSP: Trigger hover")
+        map("<c-space>", vim.lsp.completion.get, "LSP: Trigger completion", "i")
 
         -- Highlight word occurrences under cursor
         -- From Kickstart nvim https://github.com/nvim-lua/kickstart.nvim/blob/648471c9eb1f757729e800ff0a6509e01232a8e9/init.lua#L534
