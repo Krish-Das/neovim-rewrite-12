@@ -54,12 +54,29 @@ return {
           })
         end
 
+        -- Disable virtual_text by default
+        vim.diagnostic.config({
+          virtual_text = false,
+          virtual_lines = false,
+          signs = true,
+          underline = true,
+        })
+
+        -- Toggle virtual text
+        map("<leader>td", function()
+          vim.diagnostic.config({
+            virtual_text = not vim.diagnostic.config().virtual_text,
+            virtual_lines = false, -- not vim.diagnostic.config().virtual_lines,
+            signs = true,
+            underline = true,
+          })
+        end, "LSP: Toggle Diagnostics")
+
         -- Toggle inlay hints
-        --
         if client and client:supports_method("textDocument/inlayHint", event.buf) then
           map("<leader>th", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-          end, "Toggle Inlay Hints")
+          end, "LSP: Toggle Inlay Hints")
         end
       end,
     })
