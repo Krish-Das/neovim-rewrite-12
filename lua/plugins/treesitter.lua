@@ -34,6 +34,25 @@ return {
     local auto_install_parsers = true
     require("nvim-treesitter").install(parsers)
 
+    -- Neovim ≥0.12 provides built-in Treesitter-based selection (`v + an/in`).
+    -- However, MiniAi overrides the default `an`/`in` textobjects, so the
+    -- fallback LSP-based selection (`vim.lsp.buf.selection_range`) becomes
+    -- inaccessible.
+    -- These mappings restore incremental selection using LSP ranges.
+    --
+    -- See:
+    --   :h treesitter-defaults
+    --   :h vim.lsp.buf.selection_range()
+    local map_lsp_selection = function(lhs, desc)
+      local s = vim.startswith(desc, "Increase") and 1 or -1
+      local rhs = function()
+        vim.lsp.buf.selection_range(s * vim.v.count1)
+      end
+      vim.keymap.set("x", lhs, rhs, { desc = desc })
+    end
+    map_lsp_selection("<CR>", "Increase selection")
+    map_lsp_selection("<BS>", "Decrease selection")
+
     ---@param buf integer
     ---@param language string
     local function treesitter_try_attach(buf, language)
