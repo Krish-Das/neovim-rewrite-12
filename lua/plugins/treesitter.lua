@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  lazy = false, -- TODO: play with this event [[ event=BufReadPost ]]
+  lazy = true,
+  event = "BufReadPost",
   build = ":TSUpdate",
   branch = "main", -- main branch requires `tree-sitter` binary in path
 
