@@ -6,7 +6,16 @@ return {
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
   opts = {
-    keymap = { preset = "default" },
+    keymap = {
+      preset = "default",
+      ["<C-space>"] = {
+        function(cmp)
+          cmp.show()
+        end,
+      },
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+    },
     appearance = { nerd_font_variant = "mono" },
     completion = {
       ghost_text = { enabled = true, show_with_menu = false },
