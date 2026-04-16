@@ -25,7 +25,6 @@ return {
         map("grD", vim.lsp.buf.declaration, "LSP: Goto Declaration")
         map("gd", vim.lsp.buf.definition, "LSP: Goto Declaration")
         map("gh", vim.lsp.buf.hover, "LSP: Trigger hover")
-        map("<c-space>", vim.lsp.completion.get, "LSP: Trigger completion", "i")
 
         -- Highlight word occurrences under cursor
         -- From Kickstart nvim https://github.com/nvim-lua/kickstart.nvim/blob/648471c9eb1f757729e800ff0a6509e01232a8e9/init.lua#L534
