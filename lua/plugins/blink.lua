@@ -9,7 +9,7 @@ return {
     keymap = { preset = "default" },
     appearance = { nerd_font_variant = "mono" },
     completion = {
-      ghost_text = { enabled = true },
+      ghost_text = { enabled = true, show_with_menu = false },
       menu = { auto_show = false },
       documentation = { auto_show = false },
     },
