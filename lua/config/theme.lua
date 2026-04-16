@@ -57,16 +57,16 @@ function M.activate(specs, name)
   return specs
 end
 
---- Get foreground color of a highlight group as hex
+--- Get foreground and background colors of a highlight group as hex
 ---@param name string Highlight group name
----@return string|nil Hex color (`#rrggbb`) or nil if unavailable
-function M.hl_fg(name)
+---@return { fg: string|nil, bg: string|nil }
+function M.hl_colors(name)
   local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
   hl = ok and hl or {}
-  if not hl.fg then
-    return nil
+  local function tohex(c)
+    return c and string.format("#%06x", c) or nil
   end
-  return string.format("#%06x", hl.fg)
+  return { fg = tohex(hl.fg), bg = tohex(hl.bg) }
 end
 
 return M
