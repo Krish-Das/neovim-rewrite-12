@@ -12,7 +12,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
 
     -- Eye candy
-    "j-hui/fidget.nvim",
+    { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
     local map = require("config.keymap_utils")
