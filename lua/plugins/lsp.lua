@@ -12,7 +12,7 @@ local lsp = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
 
     -- Eye candy
-    { "j-hui/fidget.nvim", opts = {} },
+    "j-hui/fidget.nvim",
   },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -28,6 +28,7 @@ local lsp = {
         map("gra", vim.lsp.buf.code_action, "LSP: Code Action", { "n", "x" })
         map("g.", vim.lsp.buf.code_action, "LSP: Code Action", { "n", "x" })
         map("grD", vim.lsp.buf.declaration, "LSP: Goto Declaration")
+        map("gd", vim.lsp.buf.definition, "LSP: Goto Declaration")
 
         -- Highlight word occurrences under cursor
         -- From Kickstart nvim https://github.com/nvim-lua/kickstart.nvim/blob/648471c9eb1f757729e800ff0a6509e01232a8e9/init.lua#L534
