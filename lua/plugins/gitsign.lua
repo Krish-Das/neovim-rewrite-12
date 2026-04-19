@@ -2,7 +2,6 @@ return {
   "lewis6991/gitsigns.nvim",
   event = { "BufEnter" },
   opts = {
-    signcolumn = false,
     current_line_blame = true,
     on_attach = function(bufnr)
       local gs = require("gitsigns")
