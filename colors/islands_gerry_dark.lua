@@ -87,8 +87,8 @@ local c = {
   diff_mod_bg = "#205572", -- DIFF_MODIFIED bg
   diff_conf_bg = "#913f3f", -- DIFF_CONFLICT bg
   -- Hint / inlay
-  inlay_fg = "#96969d",
-  inlay_bg = "#393b40",
+  inlay_fg = "#56575c",
+  inlay_bg = "#1e1f22", -- "#393b40",
   inlay_cur_bg = "#486691",
 }
 
