@@ -45,6 +45,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_user_command("CopyPath", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, {})
+
+vim.api.nvim_create_user_command("CopyRelPath", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+end, {})
+
+vim.api.nvim_create_user_command("CopyFileName", function()
+  vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, {})
+
+vim.api.nvim_create_user_command("CopyDirPath", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p:h"))
+end, {})
+
 -- Vertical Help
 --
 -- vim.api.nvim_create_autocmd("BufEnter", {
