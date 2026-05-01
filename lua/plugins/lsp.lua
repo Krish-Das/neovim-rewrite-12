@@ -137,5 +137,10 @@ return {
       vim.lsp.config(name, server)
       vim.lsp.enable(name)
     end
+
+    -- Use nixd binary from system PATH
+    -- nixd needs to be installed in system PATH
+    vim.lsp.config("nixd", { cmd = { "nixd" } })
+    vim.lsp.enable("nixd")
   end,
 }
