@@ -28,10 +28,6 @@ map("<A-k>", ":m .-2<CR>==", "Move lines up")
 map("<A-j>", ":m '>+1<CR>gv=gv", "Move lines down", "v")
 map("<A-k>", ":m '<-2<CR>gv=gv", "Move lines up", "v")
 
--- Disable <C-w> in insert mode to avoid accidental window-close muscle memory
--- from other apps (e.g., browsers where Ctrl+W closes tabs/windows).
-map("<C-w>", "<Nop>", "Disabled: Delete word", "i")
-
 -- Map Ctrl+Backspace → delete previous word.
 -- Most terminals send Ctrl+Backspace as <C-h> (ASCII 0x08, shown here as ^H),
 -- so we bind that byte to <C-w> to preserve word deletion behavior.
