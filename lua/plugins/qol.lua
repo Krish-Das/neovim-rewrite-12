@@ -130,4 +130,31 @@ return {
       -- stylua: ignore end
     end,
   },
+
+  --
+  -- Disabled plugins
+  --
+  {
+    "b0o/incline.nvim",
+    event = "VeryLazy",
+    enabled = false,
+    opts = {
+      render = function(props)
+        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+        local parent = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":h:t")
+        local modified = vim.bo[props.buf].modified
+
+        local theme = require("config.theme")
+        local colors = theme.hl_colors("Comment")
+
+        return {
+          " ",
+          parent ~= "." and (colors and { parent .. "/", guifg = colors.fg } or { parent .. "/" }) or "",
+          filename,
+          modified and { " +", gui = "bold", guifg = theme.hl_colors("DiagnosticHint").fg } or "",
+          " ",
+        }
+      end,
+    },
+  },
 }
