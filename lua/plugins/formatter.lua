@@ -45,6 +45,7 @@ return {
       html = { "prettierd", "prettier", stop_after_first = true }, -- Biome is not working on this
       markdown = { "prettierd", "prettier", stop_after_first = true }, -- No support for Biome
       ["mdx"] = { "prettierd", "prettier", stop_after_first = true }, -- No support for Biome
+      typst = { "typstyle" },
     },
   },
 }

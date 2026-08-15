@@ -95,6 +95,8 @@ return {
       tailwindcss = {},
       ts_ls = {},
       vimls = {},
+      tinymist = {},
+      typstyle = {},
       -- "luacheck", -- requires "luarocks" executable in PATH.
       -- "alejandra", -- requires "alejandra" executable in PATH.
 
