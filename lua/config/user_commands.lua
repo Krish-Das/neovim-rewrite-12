@@ -61,6 +61,14 @@ vim.api.nvim_create_user_command("CopyDirPath", function()
   vim.fn.setreg("+", vim.fn.expand("%:p:h"))
 end, {})
 
+vim.api.nvim_create_user_command("ToggleDiagnostics", function()
+  if vim.diagnostic.is_enabled() then
+    vim.diagnostic.enable(false)
+  else
+    vim.diagnostic.enable(true)
+  end
+end, { desc = "Toggle diagnostics on/off" })
+
 -- Vertical Help
 --
 -- vim.api.nvim_create_autocmd("BufEnter", {
