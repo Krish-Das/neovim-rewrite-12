@@ -18,6 +18,14 @@ local spec = {
       -- require("lualine").setup({ options = { theme = "monokai-v2" } })
     end,
   },
+  { "olimorris/onedarkpro.nvim", name = "onedark", enabled = false },
+  { "folke/tokyonight.nvim", name = "tokyonight", enabled = false },
+  { "marko-cerovac/material.nvim", name = "material", enabled = false },
+  {
+    "nickkadutskyi/jb.nvim",
+    opts = { disable_hl_args = { italic = true } },
+    enabled = false,
+  },
 }
 
 return theme.activate(spec, "catppuccin")
