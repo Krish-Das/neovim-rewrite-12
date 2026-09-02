@@ -30,7 +30,6 @@ return {
         section_separators = { left = "", right = "" },
       },
       sections = {
-        -- lualine_b = { { "filename", path = 1 } },
         lualine_b = {
           {
             noice.api.statusline.mode.get,
@@ -57,7 +56,7 @@ return {
             always_visible = false,
           },
         },
-        lualine_c = {},
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = { "filetype" },
       },
     })
