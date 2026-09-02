@@ -18,7 +18,18 @@ local spec = {
       -- require("lualine").setup({ options = { theme = "monokai-v2" } })
     end,
   },
-  { "olimorris/onedarkpro.nvim", name = "onedark", enabled = false },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    enabled = false,
+    opts = {
+      dim_inactive_windows = true,
+      extend_background_behind_borders = false,
+      variant = "main",
+      styles = { transparency = false, italic = false },
+    },
+  },
+  { "olimorris/onedarkpro.nvim", name = "onedark" },
   { "folke/tokyonight.nvim", name = "tokyonight", enabled = false },
   { "marko-cerovac/material.nvim", name = "material", enabled = false },
   {
