@@ -77,10 +77,15 @@ return {
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-    opts = { window = { width = 0.75, options = {
-      signcolumn = "no",
-      number = false,
-    } } },
+    opts = {
+      window = {
+        width = 0.62,
+        options = {
+          signcolumn = "yes",
+          number = false,
+        },
+      },
+    },
   },
 
   {
