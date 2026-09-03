@@ -5,6 +5,7 @@ return {
     local lint = require("lint")
     lint.linters_by_ft = {
       markdown = { "markdownlint" },
+      -- python = { "mypy" }, -- requires "python3" executable in PATH.
     }
 
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {

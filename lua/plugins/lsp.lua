@@ -133,6 +133,7 @@ return {
       "stylua",
       "typstyle",
       "markdownlint",
+      -- "mypy", -- requires "python3" executable in PATH.
       -- "luacheck", -- requires "luarocks" executable in PATH.
       -- "alejandra", -- requires "alejandra" executable in PATH.
     }
