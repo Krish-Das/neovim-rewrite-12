@@ -132,6 +132,7 @@ return {
       "shfmt",
       "stylua",
       "typstyle",
+      "markdownlint",
       -- "luacheck", -- requires "luarocks" executable in PATH.
       -- "alejandra", -- requires "alejandra" executable in PATH.
     }
