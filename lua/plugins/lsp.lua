@@ -80,7 +80,7 @@ return {
       end,
     })
 
-    -- Enable the following language servers
+    -- Language servers (passed to vim.lsp.config / vim.lsp.enable)
     ---@type table<string, vim.lsp.Config>
     local servers = {
       bashls = {},
@@ -88,17 +88,10 @@ return {
       cssls = {},
       html = {},
       jsonls = {},
-      prettierd = {},
-      shellcheck = {},
-      shfmt = {},
-      stylua = {},
       tailwindcss = {},
       ts_ls = {},
       vimls = {},
       tinymist = {},
-      typstyle = {},
-      -- "luacheck", -- requires "luarocks" executable in PATH.
-      -- "alejandra", -- requires "alejandra" executable in PATH.
 
       -- Special Lua Config, as recommended by neovim help docs
       lua_ls = {
@@ -131,8 +124,19 @@ return {
       },
     }
 
-    -- Ensure the servers and tools above are installed
-    local ensure_installed = vim.tbl_keys(servers or {})
+    -- Formatters / linters installed via Mason, but not started as LSP servers.
+    -- mypy/pyright/ruff need `python3` on PATH for Mason's pip installer.
+    local tools = {
+      "prettierd",
+      "shellcheck",
+      "shfmt",
+      "stylua",
+      "typstyle",
+      -- "luacheck", -- requires "luarocks" executable in PATH.
+      -- "alejandra", -- requires "alejandra" executable in PATH.
+    }
+
+    local ensure_installed = vim.list_extend(vim.tbl_keys(servers), tools)
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     for name, server in pairs(servers) do
