@@ -54,21 +54,20 @@ return {
         end
 
         -- Disable virtual_text by default
-        vim.diagnostic.config({
+        local diagnostics_config = {
           virtual_text = false,
           virtual_lines = false,
-          signs = true,
-          underline = true,
-        })
+          signs = { severity = { min = vim.diagnostic.severity.INFO } },
+          underline = { severity = { min = vim.diagnostic.severity.INFO } },
+          severity = { min = vim.diagnostic.severity.INFO },
+        }
+
+        vim.diagnostic.config(diagnostics_config)
 
         -- Toggle virtual text
         map("<leader>td", function()
-          vim.diagnostic.config({
-            virtual_text = not vim.diagnostic.config().virtual_text,
-            virtual_lines = false, -- not vim.diagnostic.config().virtual_lines,
-            signs = true,
-            underline = true,
-          })
+          diagnostics_config.virtual_text = not diagnostics_config.virtual_text
+          vim.diagnostic.config(diagnostics_config)
         end, "LSP: Toggle Diagnostics")
 
         -- Toggle inlay hints
