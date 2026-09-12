@@ -11,6 +11,7 @@ local commands = {
   ["WQA"] = "wqa",
   ["Bd"] = "bd",
   ["Bda"] = "bda",
+  ["Restart"] = "restart",
 }
 for uppercase, lowercase in pairs(commands) do
   vim.api.nvim_create_user_command(uppercase, lowercase, {
