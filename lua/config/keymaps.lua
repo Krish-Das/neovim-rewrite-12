@@ -4,7 +4,7 @@ local map = require("config.keymap_utils")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-map("<Esc>", "<CMD>nohlsearch<CR>", "Clear highlights on search")
+map("<Esc>", "<Cmd>nohlsearch<CR>", "Clear highlights on search")
 map("<leader>a", "ggVG", "Select all")
 
 map("$", "$h", "Select upto the end of the line", { "v", "x", "o" })
@@ -15,7 +15,7 @@ map("gy", [["+y]], "Yank selected text to system clipboard")
 map("gy", [["+y]], "Yank selected text to system clipboard", "v")
 map("gp", [["_dP]], "Paste text and keep original text in register", "x")
 
-map("<C-\\>", "<CMD>vsplit<CR>", "Vertical Split")
+map("<C-\\>", "<Cmd>vsplit<CR>", "Vertical Split")
 
 -- delete single character without copying into register
 map("x", '"_x')
