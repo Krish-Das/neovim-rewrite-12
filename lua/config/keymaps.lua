@@ -23,17 +23,17 @@ map("C", '"_C')
 map("c", '"_c')
 
 -- Move lines up or down
-map("<A-j>", ":m .+1<CR>==", "Move lines down")
-map("<A-k>", ":m .-2<CR>==", "Move lines up")
-map("<A-j>", ":m '>+1<CR>gv=gv", "Move lines down", "v")
-map("<A-k>", ":m '<-2<CR>gv=gv", "Move lines up", "v")
+map("<A-j>", "<Cmd>m .+1<CR>==", "Move lines down")
+map("<A-k>", "<Cmd>m .-2<CR>==", "Move lines up")
+map("<A-j>", "<Cmd>m '>+1<CR>gv=gv", "Move lines down", "v")
+map("<A-k>", "<Cmd>m '<-2<CR>gv=gv", "Move lines up", "v")
 
 -- Map Ctrl+Backspace → delete previous word.
 -- Most terminals send Ctrl+Backspace as <C-h> (ASCII 0x08, shown here as ^H),
 -- so we bind that byte to <C-w> to preserve word deletion behavior.
 map("\b", "<C-w>", "Delete word", "i")
 
-map("<C-s>", ":update<CR>", "Write current buffer to the file")
+map("<C-s>", "<Cmd>update<CR>", "Write current buffer to the file")
 
 -- Join lines below and move cursor where it was
 -- map("J", "mzJ`z", "Join the line below")
