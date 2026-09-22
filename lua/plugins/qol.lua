@@ -5,6 +5,19 @@ return {
   { "nvim-mini/mini.ai", opts = {}, event = { "BufReadPost", "BufNewFile" } },
   { "tommcdo/vim-exchange", keys = { "cx", "X" } },
   { "stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
+  {
+    "marilari88/twoslash-queries.nvim",
+    ft = { "typescript", "typescriptreact" },
+    opts = { multi_line = true, highlight = "Type" },
+    config = function()
+      vim.lsp.config("ts_ls", {
+        on_attach = function(client, bufnr)
+          require("twoslash-queries").attach(client, bufnr)
+        end,
+      })
+      vim.lsp.enable("ts_ls")
+    end,
+  },
 
   -- Virt column
   {
