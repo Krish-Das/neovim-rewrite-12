@@ -32,9 +32,8 @@ return {
       sections = {
         lualine_b = {
           {
-            noice.api.statusline.mode.get,
-            cond = noice.api.statusline.mode.has,
-            color = { fg = "#ff9e64" },
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
           },
           -- { "branch", icon = "", fmt = truncate_branch_name },
           { "diff", symbols = { added = "+", modified = "~", removed = "-" } },
