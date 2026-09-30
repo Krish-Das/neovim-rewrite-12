@@ -30,6 +30,15 @@ return {
         section_separators = { left = "", right = "" },
       },
       sections = {
+        lualine_a = {
+          {
+            "mode",
+            fmt = function(str)
+              local map = { ["V-LINE"] = "VL", ["V-BLOCK"] = "VB" }
+              return map[str] or str:sub(1, 1)
+            end,
+          },
+        },
         lualine_b = {
           {
             require("noice").api.status.mode.get,
